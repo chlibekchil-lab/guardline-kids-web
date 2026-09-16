@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guardline Kids — Simulasi HP Anak</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="wrap" style="padding-top:1.2rem;">
+    <p class="muted"><a href="index.html">← Kembali</a> · Ini simulasi HP anak di browser. Nama &amp; ikon apk sungguhan selalu tampil jelas — tidak disembunyikan.</p>
+  </div>
+
+  <div class="phone-shell" style="position:relative;">
+    <div class="notif-bar" id="notifBar" class="hidden">
+      <span class="dot-live"></span> Guardline Kids aktif — terhubung ke dashboard orang tua
+    </div>
+
+    <div class="phone-body">
+
+      <!-- Tahap 1: onboarding izin -->
+      <section id="onboardingStage">
+        <h2>Siapkan Guardline Kids</h2>
+        <p class="muted">Setiap izin ditampilkan jelas satu per satu — tidak ada yang diminta diam-diam.</p>
+        <ul class="step-list" id="stepList"></ul>
+        <button class="primary" id="continueToPairBtn" style="margin-top:1rem;" disabled>Lanjut ke pairing</button>
+      </section>
+
+      <!-- Tahap 2: pairing -->
+      <section id="pairStage" class="hidden">
+        <h2>Hubungkan ke orang tua</h2>
+        <p class="muted">Masukkan 6 digit kode yang muncul di dashboard orang tua.</p>
+        <input class="code-input" id="codeInput" maxlength="6" placeholder="000000" />
+        <p class="muted" id="pairError" style="color:var(--alert);"></p>
+        <button class="amber" id="submitCodeBtn" style="margin-top:0.8rem;">Sambungkan</button>
+      </section>
+
+      <!-- Tahap 3: home -->
+      <section id="homeStage" class="hidden">
+        <h2>Halo! 👋</h2>
+        <p class="muted">HP ini terhubung dan dipantau oleh orang tuamu.</p>
+        <div class="card" style="margin-top:0.5rem;">
+          <div class="status-row"><span>Status</span><span id="homeLockStatus">Aktif</span></div>
+          <div class="status-row"><span>Baterai</span><span id="homeBattery">-</span></div>
+          <div class="status-row"><span>Lokasi dibagikan</span><span id="homeLocationShared">-</span></div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="lock-overlay hidden" id="lockOverlay">
+      <h2 style="color:var(--paper);">🔒 HP dikunci</h2>
+      <p id="lockMessage">Orang tuamu mengunci HP ini dari dashboard.</p>
+      <p class="muted" id="lockCountdown" style="color:var(--paper);"></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/child.js"></script>
+</body>
+</html>

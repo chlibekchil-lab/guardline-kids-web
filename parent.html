@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guardline Kids — Dashboard Orang Tua</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dash">
+    <aside>
+      <div class="mark">Guardline<span class="dot">·</span>Kids</div>
+      <div id="deviceList"></div>
+      <button class="ghost" id="addDeviceBtn" style="width:100%; margin-top:1rem; color:var(--paper); border-color:#ffffff40;">+ Tambah perangkat</button>
+      <p class="muted" style="color:var(--paper); margin-top:2rem;"><a href="index.html">← Kembali</a></p>
+    </aside>
+
+    <main>
+      <div id="pairingView" class="hidden">
+        <h1>Hubungkan HP anak</h1>
+        <p class="muted">Buka <strong>child.html</strong> di tab lain pada browser ini, lalu masukkan kode berikut saat diminta.</p>
+        <div class="card" style="text-align:center; max-width:320px;">
+          <p class="muted" style="margin-bottom:0.3em;">KODE PAIRING</p>
+          <div class="pairing-code" id="pairingCodeDisplay">------</div>
+          <p class="muted" id="pairingStatus" style="margin-top:1em;">Menunggu HP anak memasukkan kode…</p>
+        </div>
+      </div>
+
+      <div id="deviceView" class="hidden">
+        <h1 id="deviceTitle">Perangkat</h1>
+        <div class="card-grid">
+          <div class="card">
+            <h2>Status</h2>
+            <div class="status-row"><span>Kunci</span><span class="pill" id="lockPill">-</span></div>
+            <div class="status-row"><span>Baterai</span><span id="batteryVal">-</span></div>
+            <div class="status-row"><span>Terakhir lapor</span><span id="lastSeenVal">-</span></div>
+            <div class="status-row"><span>Lokasi</span><span id="locationVal">-</span></div>
+          </div>
+
+          <div class="card">
+            <h2>Kontrol kunci</h2>
+            <p class="muted">Kunci layar HP anak dari jarak jauh, dengan pesan dan durasi yang bisa diatur.</p>
+            <label class="muted">Pesan yang tampil di HP anak<br>
+              <input type="text" id="lockMessageInput" style="width:100%; margin-top:0.3em;" value="HP dikunci oleh orang tua. Waktunya istirahat!">
+            </label>
+            <div style="display:flex; gap:0.6em; margin:0.8em 0;">
+              <label class="muted">Jam<br><input type="text" id="lockHours" value="0" style="width:60px;"></label>
+              <label class="muted">Menit<br><input type="text" id="lockMinutes" value="15" style="width:60px;"></label>
+              <label class="muted">Detik<br><input type="text" id="lockSeconds" value="0" style="width:60px;"></label>
+            </div>
+            <button class="alert" id="lockBtn">Kunci HP sekarang</button>
+            <button class="ghost" id="unlockBtn" style="margin-left:0.5em;">Buka sekarang</button>
+            <p class="muted" id="lockRemaining" style="margin-top:0.6em;"></p>
+          </div>
+
+          <div class="card">
+            <h2>Jadwal tidur</h2>
+            <p class="muted">HP otomatis terkunci di luar jam ini.</p>
+            <label class="muted">Mulai <input type="time" id="scheduleStart" value="20:00"></label><br><br>
+            <label class="muted">Sampai <input type="time" id="scheduleEnd" value="06:00"></label><br><br>
+            <button class="amber" id="saveScheduleBtn">Simpan jadwal</button>
+            <p class="muted" id="scheduleSaved" style="margin-top:0.6em;"></p>
+          </div>
+
+          <div class="card">
+            <h2>Blokir aplikasi</h2>
+            <div id="appList"></div>
+          </div>
+
+          <div class="card">
+            <h2>Waktu layar (7 hari)</h2>
+            <div id="screenTimeChart" style="display:flex; align-items:flex-end; gap:6px; height:100px;"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/parent.js"></script>
+</body>
+</html>
